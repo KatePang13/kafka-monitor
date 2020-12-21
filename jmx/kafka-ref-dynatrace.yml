@@ -1,0 +1,11 @@
+lowercaseOutputName: true
+
+rules:
+# kafka.server.BrokerTopicMetrics.BytesInPerSec.OneMinuteRate
+- pattern : kafka.server.BrokerTopicMetrics.BytesInPerSec.Value
+  name: kafka_$1_$2_$3
+  type: GAUGE
+  labels:
+    labels:
+    "$4": "$5"
+    "$6": "$7"
