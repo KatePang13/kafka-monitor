@@ -22,8 +22,8 @@ scrape_configs:
 
   - job_name: 'kafka2'
     static_configs:
-    - targets: ['kafka2:7071']
+      - targets: ['kafka2:7071']
 
   - job_name: 'kafka3'
     static_configs:
-    - targets: ['kafka3:7071']
+      - targets: ['kafka3:7071']
