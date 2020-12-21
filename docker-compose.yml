@@ -12,8 +12,6 @@ services:
     image: grafana/grafana
     ports:
       - "3000:3000"
-    volumes:
-      - ./grafana:/var/lib/grafana
 
   zoo1:
     hostname: zoo1
@@ -37,7 +35,7 @@ services:
       KAFKA_ZOOKEEPER_CONNECT: "zoo1:2181"
       KAFKA_BROKER_ID: 1
       KAFKA_LOG4J_LOGGERS: "kafka.controller=INFO,kafka.producer.async.DefaultEventHandler=INFO,state.change.logger=INFO"
-      KAFKA_OPTS: -javaagent:/usr/app/jmx_prometheus_javaagent.jar=7071:/usr/app/kafka-2_0_0.yml
+      KAFKA_OPTS: -javaagent:/usr/app/jmx_prometheus_javaagent.jar=7071:/usr/app/kafka-ref-dynatrace.yml
     volumes:
       - ./jmx:/usr/app
     depends_on:
