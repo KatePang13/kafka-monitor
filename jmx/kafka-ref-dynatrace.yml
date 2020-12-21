@@ -1,11 +1,18 @@
-lowercaseOutputName: true
+lowercaseOutputName: false
 
 rules:
-# kafka.server.BrokerTopicMetrics.BytesInPerSec.OneMinuteRate
-- pattern : kafka.server.BrokerTopicMetrics.BytesInPerSec.Value
-  name: kafka_$1_$2_$3
+- pattern: kafka.server<type=BrokerTopicMetrics, name=MessagesInPerSec><>OneMinuteRate
+  name: pang.kafka.server.BrokerTopicMetrics.MessagesInPerSec.OneMinuteRate
   type: GAUGE
-  labels:
-    labels:
-    "$4": "$5"
-    "$6": "$7"
+
+- pattern: kafka.server<type=BrokerTopicMetrics, name=BytesInPerSec><>OneMinuteRate
+  name: pang.kafka.server.BrokerTopicMetrics.BytesInPerSec.OneMinuteRate
+  type: GAUGE
+
+- pattern: kafka.server<type=BrokerTopicMetrics, name=ReplicationBytesInPerSec><>OneMinuteRate
+  name: pang.kafka.server.BrokerTopicMetrics.ReplicationBytesInPerSec.OneMinuteRate
+  type: GAUGE
+
+- pattern: kafka.server<type=ReplicaManager, name=PartitionCount><>Value
+  name: pang.kafka.server.ReplicaManager.PartitionCount.Value
+  type: GAUGE
