@@ -9,6 +9,11 @@ fjson.close()
 
 metrics = jsonData["metrics"]
 for metric in metrics :
+    entity = metric.get("entity")
+    print(entity)
+    if entity != None and entity != 'PROCESS_GROUP_INSTANCE' :
+        continue
+
     key = metric["timeseries"]["key"]
     domain = metric["source"]["domain"]
     attribute = metric["source"]["attribute"]
@@ -24,6 +29,6 @@ for metric in metrics :
     ymlData['rules'].append(rule)
 
 #print(ymlData)
-with open(r'plugin.yaml', 'w') as file:
+with open('plugin.yaml', 'w') as file:
     documents = yaml.dump(ymlData, file)
     file.close()
