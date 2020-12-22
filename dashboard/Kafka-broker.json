@@ -16,6 +16,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 1,
+  "iteration": 1608625697270,
   "links": [],
   "panels": [
     {
@@ -66,14 +67,15 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "\r\rkafka_server_brokertopicmetrics_bytesinpersec_oneminuterate",
+          "expr": "\r\rkafka_server_brokertopicmetrics_bytesinpersec_oneminuterate{job=\"$broker\"}",
+          "hide": false,
           "instant": false,
           "interval": "",
           "legendFormat": "Incoming byte rate",
           "refId": "A"
         },
         {
-          "expr": "\rkafka_server_brokertopicmetrics_bytesoutpersec_oneminuterate",
+          "expr": "\rkafka_server_brokertopicmetrics_bytesoutpersec_oneminuterate{job=\"$broker\"}",
           "interval": "",
           "legendFormat": "Outgoing byte rate",
           "refId": "B"
@@ -168,20 +170,20 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "\r\rkafka_server_brokertopicmetrics_totalproducerequestspersec_oneminuterate",
+          "expr": "\r\rkafka_server_brokertopicmetrics_totalproducerequestspersec_oneminuterate{job=\"$broker\"}",
           "instant": false,
           "interval": "",
           "legendFormat": "Produce request rate",
           "refId": "A"
         },
         {
-          "expr": "\rkafka_server_brokertopicmetrics_failedproducerequestspersec_oneminuterate",
+          "expr": "\rkafka_server_brokertopicmetrics_failedproducerequestspersec_oneminuterate{job=\"$broker\"}",
           "interval": "",
           "legendFormat": "Failed produce requests",
           "refId": "B"
         },
         {
-          "expr": "kafka_network_requestmetrics_totaltimems_produce_count_request",
+          "expr": "kafka_network_requestmetrics_totaltimems_produce_count_request{job=\"$broker\"}",
           "interval": "",
           "legendFormat": "Produce latency",
           "refId": "C"
@@ -276,13 +278,13 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "\rkafka_server_replicamanager_partitioncount_value",
+          "expr": "\rkafka_server_replicamanager_partitioncount_value{job=\"$broker\"}",
           "interval": "",
           "legendFormat": "Partitions",
           "refId": "B"
         },
         {
-          "expr": "\r\rkafka_server_replicamanager_underreplicatedpartitions_value",
+          "expr": "\r\rkafka_server_replicamanager_underreplicatedpartitions_value{job=\"$broker\"}",
           "instant": false,
           "interval": "",
           "legendFormat": "Under replicated partitions",
@@ -378,20 +380,20 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "\r\rkafka_server_brokertopicmetrics_totalfetchrequestspersec_oneminuterate",
+          "expr": "\r\rkafka_server_brokertopicmetrics_totalfetchrequestspersec_oneminuterate{job=\"$broker\"}",
           "instant": false,
           "interval": "",
           "legendFormat": "Fetch request rate",
           "refId": "A"
         },
         {
-          "expr": "kafka_server_brokertopicmetrics_failedfetchrequestspersec_oneminuterate",
+          "expr": "kafka_server_brokertopicmetrics_failedfetchrequestspersec_oneminuterate{job=\"$broker\"}",
           "interval": "",
           "legendFormat": "Failed fetch requests",
           "refId": "B"
         },
         {
-          "expr": "kafka_network_requestmetrics_totaltimems_fetchconsumer_count_request",
+          "expr": "kafka_network_requestmetrics_totaltimems_fetchconsumer_count_request{job=\"$broker\"}",
           "interval": "",
           "legendFormat": "Fetch latency",
           "refId": "C"
@@ -443,7 +445,51 @@
   "style": "dark",
   "tags": [],
   "templating": {
-    "list": []
+    "list": [
+      {
+        "allValue": null,
+        "current": {
+          "selected": true,
+          "text": "kafka1",
+          "value": "kafka1"
+        },
+        "datasource": "Prometheus",
+        "definition": "label_values(job)",
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": null,
+        "multi": false,
+        "name": "broker",
+        "options": [
+          {
+            "selected": true,
+            "text": "kafka1",
+            "value": "kafka1"
+          },
+          {
+            "selected": false,
+            "text": "kafka2",
+            "value": "kafka2"
+          },
+          {
+            "selected": false,
+            "text": "kafka3",
+            "value": "kafka3"
+          }
+        ],
+        "query": "label_values(job)",
+        "refresh": 0,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      }
+    ]
   },
   "time": {
     "from": "now-1h",
@@ -453,5 +499,5 @@
   "timezone": "",
   "title": "Kafka broker",
   "uid": "dLJMoIxGk",
-  "version": 2
+  "version": 3
 }
