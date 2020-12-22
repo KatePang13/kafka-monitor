@@ -30,7 +30,7 @@ e1cdc755d805   confluentinc/cp-kafka       "/etc/confluent/dock…"   About an h
 
 [jmx_exporter](https://github.com/prometheus/jmx_exporter)  是 一个 javaagent,可以将宿主进程的 jmx 指标，暴露指定到http端口，处理成 promethus所接收的格式，并支持指标正则匹配，指标二次加工处理 等。
 
-对于 kafka，可以通过 KAFKA_OPTS，指定  javaagent
+对于 kafka，可以通过 KAFKA_OPTS，指定  javaagent，kafka-2_0_0.yml 为官方仓库给出的kafka jmx 监控配置，基本覆盖所有的指标。
 
 ```
 KAFKA_OPTS: -javaagent:/usr/app/jmx_prometheus_javaagent.jar=7071:/usr/app/kafka-2_0_0.yml
@@ -38,7 +38,7 @@ KAFKA_OPTS: -javaagent:/usr/app/jmx_prometheus_javaagent.jar=7071:/usr/app/kafka
 
 ### promethus
 
-而 promethus 通过配置 targets ，从指定的端口 抓取指标，可以通过 promethus server 访问，也可以作为 grafana 数据源 进行可视化
+而 promethus 通过配置 targets ，从指定的端口 抓取指标，可以通过 promethus server 访问，也可以作为 grafana 数据源 进行可视化，job_name 和 target 会成为指标数据的2个默认标签 `job`, `instance` :
 
 ```yaml
 scrape_configs:
