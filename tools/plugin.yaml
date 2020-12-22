@@ -1,128 +1,128 @@
 lowercaseOutputName: true
 rules:
-- name: pang.kafka.server.BrokerTopicMetrics.BytesInPerSec.OneMinuteRate
+- name: kafka.server.BrokerTopicMetrics.BytesInPerSec.OneMinuteRate
   pattern: kafka.server<type=BrokerTopicMetrics, name=BytesInPerSec><>OneMinuteRate
   type: GAUGE
-- name: pang.kafka.server.BrokerTopicMetrics.BytesOutPerSec.OneMinuteRate
+- name: kafka.server.BrokerTopicMetrics.BytesOutPerSec.OneMinuteRate
   pattern: kafka.server<type=BrokerTopicMetrics, name=BytesOutPerSec><>OneMinuteRate
   type: GAUGE
-- name: pang.kafka.server.BrokerTopicMetrics.MessagesInPerSec.OneMinuteRate
+- name: kafka.server.BrokerTopicMetrics.MessagesInPerSec.OneMinuteRate
   pattern: kafka.server<type=BrokerTopicMetrics, name=MessagesInPerSec><>OneMinuteRate
   type: GAUGE
-- name: pang.kafka.server.ReplicaManager.PartitionCount.Value
+- name: kafka.server.ReplicaManager.PartitionCount.Value
   pattern: kafka.server<type=ReplicaManager, name=PartitionCount><>Value
   type: GAUGE
-- name: pang.pg.kafka.server.ReplicaManager.PartitionCount.Value
+- name: pg.kafka.server.ReplicaManager.PartitionCount.Value
   pattern: kafka.server<type=ReplicaManager, name=PartitionCount><>Value
   type: GAUGE
-- name: pang.kafka.server.ReplicaManager.UnderReplicatedPartitions.Value
+- name: kafka.server.ReplicaManager.UnderReplicatedPartitions.Value
   pattern: kafka.server<type=ReplicaManager, name=UnderReplicatedPartitions><>Value
   type: GAUGE
-- name: pang.pg.kafka.server.ReplicaManager.UnderReplicatedPartitions.Value
+- name: pg.kafka.server.ReplicaManager.UnderReplicatedPartitions.Value
   pattern: kafka.server<type=ReplicaManager, name=UnderReplicatedPartitions><>Value
   type: GAUGE
-- name: pang.pg.kafka.controller.KafkaController.OfflinePartitionsCount.Value
+- name: pg.kafka.controller.KafkaController.OfflinePartitionsCount.Value
   pattern: kafka.controller<type=KafkaController, name=OfflinePartitionsCount><>Value
   type: GAUGE
-- name: pang.pg.kafka.controller.KafkaController.ActiveControllerCount.Value
+- name: pg.kafka.controller.KafkaController.ActiveControllerCount.Value
   pattern: kafka.controller<type=KafkaController, name=ActiveControllerCount><>Value
   type: GAUGE
-- name: pang.kafka.log.LogFlushStats.LogFlushRateAndTimeMs.Percentile95th
+- name: kafka.log.LogFlushStats.LogFlushRateAndTimeMs.Percentile95th
   pattern: kafka.log<type=LogFlushStats, name=LogFlushRateAndTimeMs><>95thPercentile
   type: GAUGE
-- name: pang.kafka.log.LogFlushStats.LogFlushRateAndTimeMs.Mean
+- name: kafka.log.LogFlushStats.LogFlushRateAndTimeMs.Mean
   pattern: kafka.log<type=LogFlushStats, name=LogFlushRateAndTimeMs><>Mean
   type: GAUGE
-- name: pang.kafka.network.RequestMetrics.RequestsPerSec.Produce.OneMinuteRate.request
+- name: kafka.network.RequestMetrics.RequestsPerSec.Produce.OneMinuteRate.request
   pattern: kafka.network<type=RequestMetrics, name=RequestsPerSec, request=Produce><>OneMinuteRate
   type: GAUGE
-- name: pang.kafka.network.RequestMetrics.RequestsPerSec.FetchConsumer.OneMinuteRate.request
+- name: kafka.network.RequestMetrics.RequestsPerSec.FetchConsumer.OneMinuteRate.request
   pattern: kafka.network<type=RequestMetrics, name=RequestsPerSec, request=FetchConsumer><>OneMinuteRate
   type: GAUGE
-- name: pang.kafka.network.RequestMetrics.RequestsPerSec.FetchFollower.OneMinuteRate.request
+- name: kafka.network.RequestMetrics.RequestsPerSec.FetchFollower.OneMinuteRate.request
   pattern: kafka.network<type=RequestMetrics, name=RequestsPerSec, request=FetchFollower><>OneMinuteRate
   type: GAUGE
-- name: pang.kafka.network.RequestMetrics.TotalTimeMs.Produce.Count.request
+- name: kafka.network.RequestMetrics.TotalTimeMs.Produce.Count.request
   pattern: kafka.network<type=RequestMetrics, name=TotalTimeMs, request=Produce><>Count
   type: GAUGE
-- name: pang.kafka.network.RequestMetrics.TotalTimeMs.FetchConsumer.Count.request
+- name: kafka.network.RequestMetrics.TotalTimeMs.FetchConsumer.Count.request
   pattern: kafka.network<type=RequestMetrics, name=TotalTimeMs, request=FetchConsumer><>Count
   type: GAUGE
-- name: pang.kafka.network.RequestMetrics.TotalTimeMs.FetchFollower.Count.request
+- name: kafka.network.RequestMetrics.TotalTimeMs.FetchFollower.Count.request
   pattern: kafka.network<type=RequestMetrics, name=TotalTimeMs, request=FetchFollower><>Count
   type: GAUGE
-- name: pang.kafka.server.BrokerTopicMetrics.TotalProduceRequestsPerSec.OneMinuteRate
+- name: kafka.server.BrokerTopicMetrics.TotalProduceRequestsPerSec.OneMinuteRate
   pattern: kafka.server<type=BrokerTopicMetrics, name=TotalProduceRequestsPerSec><>OneMinuteRate
   type: GAUGE
-- name: pang.kafka.server.BrokerTopicMetrics.TotalFetchRequestsPerSec.OneMinuteRate
+- name: kafka.server.BrokerTopicMetrics.TotalFetchRequestsPerSec.OneMinuteRate
   pattern: kafka.server<type=BrokerTopicMetrics, name=TotalFetchRequestsPerSec><>OneMinuteRate
   type: GAUGE
-- name: pang.kafka.server.BrokerTopicMetrics.FailedProduceRequestsPerSec.OneMinuteRate
+- name: kafka.server.BrokerTopicMetrics.FailedProduceRequestsPerSec.OneMinuteRate
   pattern: kafka.server<type=BrokerTopicMetrics, name=FailedProduceRequestsPerSec><>OneMinuteRate
   type: GAUGE
-- name: pang.kafka.server.BrokerTopicMetrics.FailedFetchRequestsPerSec.OneMinuteRate
+- name: kafka.server.BrokerTopicMetrics.FailedFetchRequestsPerSec.OneMinuteRate
   pattern: kafka.server<type=BrokerTopicMetrics, name=FailedFetchRequestsPerSec><>OneMinuteRate
   type: GAUGE
-- name: pang.kafka.controller.ControllerStats.LeaderElectionRateAndTimeMs.OneMinuteRate
+- name: kafka.controller.ControllerStats.LeaderElectionRateAndTimeMs.OneMinuteRate
   pattern: kafka.controller<type=ControllerStats, name=LeaderElectionRateAndTimeMs><>OneMinuteRate
   type: GAUGE
-- name: pang.pg.kafka.controller.ControllerStats.LeaderElectionRateAndTimeMs.OneMinuteRate
+- name: pg.kafka.controller.ControllerStats.LeaderElectionRateAndTimeMs.OneMinuteRate
   pattern: kafka.controller<type=ControllerStats, name=LeaderElectionRateAndTimeMs><>OneMinuteRate
   type: GAUGE
-- name: pang.kafka.controller.ControllerStats.UncleanLeaderElectionsPerSec.OneMinuteRate
+- name: kafka.controller.ControllerStats.UncleanLeaderElectionsPerSec.OneMinuteRate
   pattern: kafka.controller<type=ControllerStats, name=UncleanLeaderElectionsPerSec><>OneMinuteRate
   type: GAUGE
-- name: pang.pg.kafka.controller.ControllerStats.UncleanLeaderElectionsPerSec.OneMinuteRate
+- name: pg.kafka.controller.ControllerStats.UncleanLeaderElectionsPerSec.OneMinuteRate
   pattern: kafka.controller<type=ControllerStats, name=UncleanLeaderElectionsPerSec><>OneMinuteRate
   type: GAUGE
-- name: pang.kafka.server.ReplicaManager.LeaderCount.Value
+- name: kafka.server.ReplicaManager.LeaderCount.Value
   pattern: kafka.server<type=ReplicaManager, name=LeaderCount><>Value
   type: GAUGE
-- name: pang.kafka.server.ReplicaFetcherManager.MaxLag.Replica.Value
+- name: kafka.server.ReplicaFetcherManager.MaxLag.Replica.Value
   pattern: kafka.server<type=ReplicaFetcherManager, name=MaxLag, clientId=Replica><>Value
   type: GAUGE
-- name: pang.kafka.network.RequestChannel.RequestQueueSize.Value
+- name: kafka.network.RequestChannel.RequestQueueSize.Value
   pattern: kafka.network<type=RequestChannel, name=RequestQueueSize><>Value
   type: GAUGE
-- name: pang.kafka.server.SessionExpireListener.ZooKeeperDisconnectsPerSec.OneMinuteRate
+- name: kafka.server.SessionExpireListener.ZooKeeperDisconnectsPerSec.OneMinuteRate
   pattern: kafka.server<type=SessionExpireListener, name=ZooKeeperDisconnectsPerSec><>OneMinuteRate
   type: GAUGE
-- name: pang.kafka.server.SessionExpireListener.ZooKeeperExpiresPerSec.OneMinuteRate
+- name: kafka.server.SessionExpireListener.ZooKeeperExpiresPerSec.OneMinuteRate
   pattern: kafka.server<type=SessionExpireListener, name=ZooKeeperExpiresPerSec><>OneMinuteRate
   type: GAUGE
-- name: pang.kafka.producer.producer-metrics.request-rate
+- name: kafka.producer.producer-metrics.request-rate
   pattern: kafka.producer<type=producer-metrics, client-id=*><>request-rate
   type: GAUGE
-- name: pang.kafka.consumer.consumer-metrics.request-rate
+- name: kafka.consumer.consumer-metrics.request-rate
   pattern: kafka.consumer<type=consumer-metrics, client-id=*><>request-rate
   type: GAUGE
-- name: pang.kafka.connect.connect-metrics.request-rate
+- name: kafka.connect.connect-metrics.request-rate
   pattern: kafka.connect<type=connect-metrics, client-id=*><>request-rate
   type: GAUGE
-- name: pang.kafka.producer.producer-metrics.request-size-avg
+- name: kafka.producer.producer-metrics.request-size-avg
   pattern: kafka.producer<type=producer-metrics, client-id=*><>request-size-avg
   type: GAUGE
-- name: pang.kafka.consumer.consumer-metrics.request-size-avg
+- name: kafka.consumer.consumer-metrics.request-size-avg
   pattern: kafka.consumer<type=consumer-metrics, client-id=*><>request-size-avg
   type: GAUGE
-- name: pang.kafka.connect.connect-metrics.request-size-avg
+- name: kafka.connect.connect-metrics.request-size-avg
   pattern: kafka.connect<type=connect-metrics, client-id=*><>request-size-avg
   type: GAUGE
-- name: pang.kafka.producer.producer-metrics.incoming-byte-rate
+- name: kafka.producer.producer-metrics.incoming-byte-rate
   pattern: kafka.producer<type=producer-metrics, client-id=*><>incoming-byte-rate
   type: GAUGE
-- name: pang.kafka.consumer.consumer-metrics.incoming-byte-rate
+- name: kafka.consumer.consumer-metrics.incoming-byte-rate
   pattern: kafka.consumer<type=consumer-metrics, client-id=*><>incoming-byte-rate
   type: GAUGE
-- name: pang.kafka.connect.connect-metrics.incoming-byte-rate
+- name: kafka.connect.connect-metrics.incoming-byte-rate
   pattern: kafka.connect<type=connect-metrics, client-id=*><>incoming-byte-rate
   type: GAUGE
-- name: pang.kafka.producer.producer-metrics.outgoing-byte-rate
+- name: kafka.producer.producer-metrics.outgoing-byte-rate
   pattern: kafka.producer<type=producer-metrics, client-id=*><>outgoing-byte-rate
   type: GAUGE
-- name: pang.kafka.consumer.consumer-metrics.outgoing-byte-rate
+- name: kafka.consumer.consumer-metrics.outgoing-byte-rate
   pattern: kafka.consumer<type=consumer-metrics, client-id=*><>outgoing-byte-rate
   type: GAUGE
-- name: pang.kafka.connect.connect-metrics.outgoing-byte-rate
+- name: kafka.connect.connect-metrics.outgoing-byte-rate
   pattern: kafka.connect<type=connect-metrics, client-id=*><>outgoing-byte-rate
   type: GAUGE

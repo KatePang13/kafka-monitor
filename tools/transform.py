@@ -20,10 +20,10 @@ for metric in metrics :
     keyProperties = keyProperties.replace(': ', '=')
     pattern = '{domain}<{keyProperties}><>{attribute}'.format(domain=domain, keyProperties=keyProperties, attribute=attribute)
     #print(key, pattern)
-    rule = { 'pattern' : pattern , 'name':'pang.'+key,  'type': 'GAUGE'}
+    rule = { 'pattern' : pattern , 'name':key,  'type': 'GAUGE'}
     ymlData['rules'].append(rule)
 
-print(ymlData)
+#print(ymlData)
 with open(r'plugin.yaml', 'w') as file:
     documents = yaml.dump(ymlData, file)
     file.close()
