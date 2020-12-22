@@ -60,11 +60,11 @@ scrape_configs:
 
 #### 设置 prometheus 数据源
 
-![image-20201221154118250](D:\github\jmx\kafka-monitor\kafka-monitor\README.assets\image-20201221154118250.png) 
+![image-20201221154118250](README.assets\image-20201221154118250.png) 
 
 #### 设置查询
 
-![image-20201221155039107](D:\github\jmx\kafka-monitor\kafka-monitor\README.assets\image-20201221155039107.png)
+![image-20201221155039107](README.assets\image-20201221155039107.png)
 
 
 
@@ -145,10 +145,10 @@ kafka_server_brokertopicmetrics_bytesin_total
 
 #### Promethus Graph 数据展示
 
-![image-20201221151020715](D:\github\jmx\kafka-monitor\kafka-monitor\README.assets\image-20201221151020715.png)
+![image-20201221151020715](README.assets\image-20201221151020715.png)
 
-![image-20201221152041958](D:\github\jmx\kafka-monitor\kafka-monitor\README.assets\image-20201221152041958.png)
+![image-20201221152041958](README.assets\image-20201221152041958.png)
 
 #### Grafana 数据展示
 
-![image-20201221155218644](D:\github\jmx\kafka-monitor\kafka-monitor\README.assets\image-20201221155218644.png)
+![image-20201221155218644](README.assets\image-20201221155218644.png)
