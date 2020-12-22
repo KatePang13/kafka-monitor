@@ -5,6 +5,7 @@
 ## Quick Start
 
 ```shell
+cd docker
 docker-compose up -d
 docker ps
 
