@@ -159,19 +159,19 @@ max(kafka_server_replicamanager_partitioncount_value) without(instance, job)
 
 **dynatrace 的 kafka broker:**
 
-![image-20201222183543791](D:\github\jmx\kafka-monitor\kafka-monitor\jmx_exporter迁移dynatrace_kafka_plugin.assets\image-20201222183543791.png)
+![image-20201222183543791](jmx_exporter迁移dynatrace_kafka_plugin.assets\image-20201222183543791.png)
 
 **grafana 的 kafka-broker：**
 
-![image-20201222183640614](D:\github\jmx\kafka-monitor\kafka-monitor\jmx_exporter迁移dynatrace_kafka_plugin.assets\image-20201222183640614.png)
+![image-20201222183640614](jmx_exporter迁移dynatrace_kafka_plugin.assets\image-20201222183640614.png)
 
 **dynatrace 的 kafka network:**
 
-![image-20201222183741754](D:\github\jmx\kafka-monitor\kafka-monitor\jmx_exporter迁移dynatrace_kafka_plugin.assets\image-20201222183741754.png)
+![image-20201222183741754](jmx_exporter迁移dynatrace_kafka_plugin.assets\image-20201222183741754.png)
 
 **grafana 的 kafka-broker:**
 
-![image-20201222183825830](D:\github\jmx\kafka-monitor\kafka-monitor\jmx_exporter迁移dynatrace_kafka_plugin.assets\image-20201222183825830.png)
+![image-20201222183825830](jmx_exporter迁移dynatrace_kafka_plugin.assets\image-20201222183825830.png)
 
 
 
