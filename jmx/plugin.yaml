@@ -12,20 +12,8 @@ rules:
 - name: kafka.server.ReplicaManager.PartitionCount.Value
   pattern: kafka.server<type=ReplicaManager, name=PartitionCount><>Value
   type: GAUGE
-- name: pg.kafka.server.ReplicaManager.PartitionCount.Value
-  pattern: kafka.server<type=ReplicaManager, name=PartitionCount><>Value
-  type: GAUGE
 - name: kafka.server.ReplicaManager.UnderReplicatedPartitions.Value
   pattern: kafka.server<type=ReplicaManager, name=UnderReplicatedPartitions><>Value
-  type: GAUGE
-- name: pg.kafka.server.ReplicaManager.UnderReplicatedPartitions.Value
-  pattern: kafka.server<type=ReplicaManager, name=UnderReplicatedPartitions><>Value
-  type: GAUGE
-- name: pg.kafka.controller.KafkaController.OfflinePartitionsCount.Value
-  pattern: kafka.controller<type=KafkaController, name=OfflinePartitionsCount><>Value
-  type: GAUGE
-- name: pg.kafka.controller.KafkaController.ActiveControllerCount.Value
-  pattern: kafka.controller<type=KafkaController, name=ActiveControllerCount><>Value
   type: GAUGE
 - name: kafka.log.LogFlushStats.LogFlushRateAndTimeMs.Percentile95th
   pattern: kafka.log<type=LogFlushStats, name=LogFlushRateAndTimeMs><>95thPercentile
@@ -66,13 +54,7 @@ rules:
 - name: kafka.controller.ControllerStats.LeaderElectionRateAndTimeMs.OneMinuteRate
   pattern: kafka.controller<type=ControllerStats, name=LeaderElectionRateAndTimeMs><>OneMinuteRate
   type: GAUGE
-- name: pg.kafka.controller.ControllerStats.LeaderElectionRateAndTimeMs.OneMinuteRate
-  pattern: kafka.controller<type=ControllerStats, name=LeaderElectionRateAndTimeMs><>OneMinuteRate
-  type: GAUGE
 - name: kafka.controller.ControllerStats.UncleanLeaderElectionsPerSec.OneMinuteRate
-  pattern: kafka.controller<type=ControllerStats, name=UncleanLeaderElectionsPerSec><>OneMinuteRate
-  type: GAUGE
-- name: pg.kafka.controller.ControllerStats.UncleanLeaderElectionsPerSec.OneMinuteRate
   pattern: kafka.controller<type=ControllerStats, name=UncleanLeaderElectionsPerSec><>OneMinuteRate
   type: GAUGE
 - name: kafka.server.ReplicaManager.LeaderCount.Value

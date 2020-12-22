@@ -128,18 +128,51 @@ grep  "timeseries" plugin.json -A 1 |grep key
 
 ## 迁移
 
+### 直接采集指标
+
+上面的指标中，不是以 pg 开头的，都是直接从 jmx 直接查询得到的指标，直接将 plugin.json 中的关于定位jmx属性的配置翻译成 jmx_exporter 的配置文件即可，为了避免重复性工作，写了一个小工具  [transform.py](tools/transform.py)  进行配置转换, 得到的配置格式如下：
+
+```yaml
+lowercaseOutputName: true
+rules:
+- name: kafka.server.BrokerTopicMetrics.BytesInPerSec.OneMinuteRate
+  pattern: kafka.server<type=BrokerTopicMetrics, name=BytesInPerSec><>OneMinuteRate
+  type: GAUGE
+#...
 ```
 
+### 聚合指标
+
+dynatrace 中的 plugin.json 中有一个参数 entity，默认是  `PROCESS_GROUP_INSTANCE` ，而有一些指标是 `"entity": "PROCESS_GROUP"`， 这些指标不可能直接通过 jmx 查询 得到，需要在采集到数据之后，对数据做聚合，这里我们暂且在 grafana 可视化的时候，使用 PromQL 进行聚合操作
+
+比如   `pg.kafka.server.ReplicaManager.PartitionCount.Value`  是去聚合所有的 `kafka.server.ReplicaManager.PartitionCount.Value` 取最大值，PromQL 如下所示：
+
 ```
+max(kafka_server_replicamanager_partitioncount_value) without(instance, job)
+```
+
+
 
 ## 对比验证
 
 ### 首页指标
 
-dynatrace 的 kafka broker
+dynatrace 的 kafka broker:
 
-![image-20201222152949008](D:\github\jmx\kafka-monitor\kafka-monitor\jmx_exporter 迁移 dynatrace kafka plugin.assets\image-20201222152949008.png)
+![image-20201222183543791](D:\github\jmx\kafka-monitor\kafka-monitor\jmx_exporter 迁移 dynatrace kafka plugin.assets\image-20201222183543791.png)
 
-grafana：
+grafana 的 kafka-broker：
 
-![image-20201222160832822](D:\github\jmx\kafka-monitor\kafka-monitor\jmx_exporter 迁移 dynatrace kafka plugin.assets\image-20201222160832822.png)
+![image-20201222183640614](D:\github\jmx\kafka-monitor\kafka-monitor\jmx_exporter 迁移 dynatrace kafka plugin.assets\image-20201222183640614.png)
+
+dynatrace 的 kafka network:
+
+![image-20201222183741754](D:\github\jmx\kafka-monitor\kafka-monitor\jmx_exporter 迁移 dynatrace kafka plugin.assets\image-20201222183741754.png)
+
+grafana 的 kafka-broker:
+
+![image-20201222183825830](D:\github\jmx\kafka-monitor\kafka-monitor\jmx_exporter 迁移 dynatrace kafka plugin.assets\image-20201222183825830.png)
+
+
+
+**经对比，该方法可以采集所有 dynatrace server 上显示的所有 kafka 指标。**
