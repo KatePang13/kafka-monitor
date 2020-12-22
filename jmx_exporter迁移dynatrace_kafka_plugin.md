@@ -157,21 +157,21 @@ max(kafka_server_replicamanager_partitioncount_value) without(instance, job)
 
 ### 首页指标
 
-dynatrace 的 kafka broker:
+**dynatrace 的 kafka broker:**
 
-![image-20201222183543791](D:\github\jmx\kafka-monitor\kafka-monitor\jmx_exporter 迁移 dynatrace kafka plugin.assets\image-20201222183543791.png)
+![image-20201222183543791](D:\github\jmx\kafka-monitor\kafka-monitor\jmx_exporter迁移dynatrace_kafka_plugin.assets\image-20201222183543791.png)
 
-grafana 的 kafka-broker：
+**grafana 的 kafka-broker：**
 
-![image-20201222183640614](D:\github\jmx\kafka-monitor\kafka-monitor\jmx_exporter 迁移 dynatrace kafka plugin.assets\image-20201222183640614.png)
+![image-20201222183640614](D:\github\jmx\kafka-monitor\kafka-monitor\jmx_exporter迁移dynatrace_kafka_plugin.assets\image-20201222183640614.png)
 
-dynatrace 的 kafka network:
+**dynatrace 的 kafka network:**
 
-![image-20201222183741754](D:\github\jmx\kafka-monitor\kafka-monitor\jmx_exporter 迁移 dynatrace kafka plugin.assets\image-20201222183741754.png)
+![image-20201222183741754](D:\github\jmx\kafka-monitor\kafka-monitor\jmx_exporter迁移dynatrace_kafka_plugin.assets\image-20201222183741754.png)
 
-grafana 的 kafka-broker:
+**grafana 的 kafka-broker:**
 
-![image-20201222183825830](D:\github\jmx\kafka-monitor\kafka-monitor\jmx_exporter 迁移 dynatrace kafka plugin.assets\image-20201222183825830.png)
+![image-20201222183825830](D:\github\jmx\kafka-monitor\kafka-monitor\jmx_exporter迁移dynatrace_kafka_plugin.assets\image-20201222183825830.png)
 
 
 
