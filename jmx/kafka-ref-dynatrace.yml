@@ -1,4 +1,4 @@
-lowercaseOutputName: false
+lowercaseOutputName: true
 
 rules:
 - pattern: kafka.server<type=BrokerTopicMetrics, name=MessagesInPerSec><>OneMinuteRate
