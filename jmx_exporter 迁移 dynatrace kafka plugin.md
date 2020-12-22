@@ -1,5 +1,7 @@
 # jmx_exporter 迁移 dynatrace kafka plugin
 
+环境搭建，请参考 [README](README.md)
+
 ## dynatrace plugin.json 格式
 
 plugin.json 中，每个 timeseries 对应一个指标，格式如下:
@@ -54,7 +56,7 @@ plugin.json 中，每个 timeseries 对应一个指标，格式如下:
 ]    
 ```
 
-通过   domain ， keyProperties  两个字段定位相应的指标，所以这2个指标采集的是同一个指标，对应的是kafka中的
+通过   domain ， keyProperties<type, name>,   attribute    字段定位相应的指标，以上这2个指标采集的是同一个指标，对应的是kafka中的
 
 | DESCRIPTION      | MBEAN NAME                                           | NORMAL VALUE               |
 | :--------------- | :--------------------------------------------------- | :------------------------- |
@@ -69,6 +71,10 @@ plugin.json 中，每个 timeseries 对应一个指标，格式如下:
 - `aggregation`  时间序列数据点聚合（MIN / MAX / AVG / SUM）。默认值：AVG。这里的聚合是 MAX
 
 关于 plugin.json的详细配置，请参阅 [plugin_json_apidoc](https://dynatrace.github.io/plugin-sdk/api/plugin_json_apidoc.html) 。
+
+示例的指标  PartitionCount.Value 在 jconsole 中显示如下：
+
+![image-20201221221126545](D:\github\jmx\kafka-monitor\kafka-monitor\jmx_exporter 迁移 dynatrace kafka plugin.assets\image-20201221221126545.png)
 
 
 
@@ -122,3 +128,18 @@ grep  "timeseries" plugin.json -A 1 |grep key
 
 ## 迁移
 
+```
+
+```
+
+## 对比验证
+
+### 首页指标
+
+dynatrace 的 kafka broker
+
+![image-20201222152949008](D:\github\jmx\kafka-monitor\kafka-monitor\jmx_exporter 迁移 dynatrace kafka plugin.assets\image-20201222152949008.png)
+
+grafana：
+
+![image-20201222160832822](D:\github\jmx\kafka-monitor\kafka-monitor\jmx_exporter 迁移 dynatrace kafka plugin.assets\image-20201222160832822.png)
