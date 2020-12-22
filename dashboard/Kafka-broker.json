@@ -143,7 +143,7 @@
         "y": 0
       },
       "hiddenSeries": false,
-      "id": 5,
+      "id": 6,
       "legend": {
         "avg": false,
         "current": false,
@@ -170,30 +170,19 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "\r\rkafka_server_brokertopicmetrics_totalproducerequestspersec_oneminuterate{job=\"$broker\"}",
+          "expr": "\r\rkafka_server_brokertopicmetrics_messagesinpersec_oneminuterate{job=\"$broker\"}",
+          "hide": false,
           "instant": false,
           "interval": "",
-          "legendFormat": "Produce request rate",
+          "legendFormat": "Messages in rate",
           "refId": "A"
-        },
-        {
-          "expr": "\rkafka_server_brokertopicmetrics_failedproducerequestspersec_oneminuterate{job=\"$broker\"}",
-          "interval": "",
-          "legendFormat": "Failed produce requests",
-          "refId": "B"
-        },
-        {
-          "expr": "kafka_network_requestmetrics_totaltimems_produce_count_request{job=\"$broker\"}",
-          "interval": "",
-          "legendFormat": "Produce latency",
-          "refId": "C"
         }
       ],
       "thresholds": [],
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Produce request rate",
+      "title": "Message",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -251,7 +240,7 @@
         "y": 9
       },
       "hiddenSeries": false,
-      "id": 3,
+      "id": 5,
       "legend": {
         "avg": false,
         "current": false,
@@ -278,24 +267,30 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "\rkafka_server_replicamanager_partitioncount_value{job=\"$broker\"}",
+          "expr": "\r\rkafka_server_brokertopicmetrics_totalproducerequestspersec_oneminuterate{job=\"$broker\"}",
+          "instant": false,
           "interval": "",
-          "legendFormat": "Partitions",
+          "legendFormat": "Produce request rate",
+          "refId": "A"
+        },
+        {
+          "expr": "\rkafka_server_brokertopicmetrics_failedproducerequestspersec_oneminuterate{job=\"$broker\"}",
+          "interval": "",
+          "legendFormat": "Failed produce requests",
           "refId": "B"
         },
         {
-          "expr": "\r\rkafka_server_replicamanager_underreplicatedpartitions_value{job=\"$broker\"}",
-          "instant": false,
+          "expr": "kafka_network_requestmetrics_totaltimems_produce_count_request{job=\"$broker\"}",
           "interval": "",
-          "legendFormat": "Under replicated partitions",
-          "refId": "A"
+          "legendFormat": "Produce latency",
+          "refId": "C"
         }
       ],
       "thresholds": [],
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Partions",
+      "title": "Produce request rate",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -439,6 +434,507 @@
         "align": false,
         "alignLevel": null
       }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 18
+      },
+      "hiddenSeries": false,
+      "id": 7,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.3.6",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "kafka_controller_controllerstats_leaderelectionrateandtimems_oneminuterate{job=\"$broker\"}",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "Leader election rate",
+          "refId": "A"
+        },
+        {
+          "expr": "kafka_controller_controllerstats_uncleanleaderelectionspersec_oneminuterate{job=\"$broker\"}",
+          "interval": "",
+          "legendFormat": "Unclean election rate",
+          "refId": "B"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Leader",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 12,
+        "y": 18
+      },
+      "hiddenSeries": false,
+      "id": 8,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.3.6",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "\r\rkafka_server_replicafetchermanager_maxlag_replica_value{job=\"$broker\"}",
+          "hide": false,
+          "instant": false,
+          "interval": "",
+          "legendFormat": "Max follower lag",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Lag(Maximum lag in messages between a follower and leader replicas.)",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 27
+      },
+      "hiddenSeries": false,
+      "id": 3,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.3.6",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "\rkafka_server_replicamanager_partitioncount_value{job=\"$broker\"}",
+          "interval": "",
+          "legendFormat": "Partitions",
+          "refId": "B"
+        },
+        {
+          "expr": "\r\rkafka_server_replicamanager_underreplicatedpartitions_value{job=\"$broker\"}",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "Under replicated partitions",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Partions",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 12,
+        "y": 27
+      },
+      "hiddenSeries": false,
+      "id": 10,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.3.6",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "\rkafka_server_sessionexpirelistener_zookeeperdisconnectspersec_oneminuterate{job=\"$broker\"}",
+          "interval": "",
+          "legendFormat": "ZooKeeper disconnects",
+          "refId": "B"
+        },
+        {
+          "expr": "\r\rkafka_server_sessionexpirelistener_zookeeperexpirespersec_oneminuterate{job=\"$broker\"}",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "ZooKeeper expires",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "ZooKeeper",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 36
+      },
+      "hiddenSeries": false,
+      "id": 9,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.3.6",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "kafka_network_requestchannel_requestqueuesize_value{job=\"$broker\"}",
+          "hide": false,
+          "instant": false,
+          "interval": "",
+          "legendFormat": "Request queue size",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Queue Size",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
     }
   ],
   "schemaVersion": 26,
@@ -499,5 +995,5 @@
   "timezone": "",
   "title": "Kafka broker",
   "uid": "dLJMoIxGk",
-  "version": 3
+  "version": 5
 }
