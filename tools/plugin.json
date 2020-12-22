@@ -1,0 +1,1470 @@
+{
+  "name": "dynatrace.jmx.kafka",
+  "type": "JMX",
+  "version": "2.003",
+  "metricGroup": "tech.kafka",
+  "experimentalMinVersion": "1.000",
+  "productiveMinVersion": "2.000",
+  "entity": "PROCESS_GROUP_INSTANCE",
+  "technologies": ["KAFKA"],
+  "processTypes": [
+    10
+  ],
+  "configUI": {
+    "displayName": "Kafka JMX"
+  },
+  "metrics": [
+    {
+      "timeseries": {
+        "key": "kafka.server.BrokerTopicMetrics.BytesInPerSec.OneMinuteRate",
+        "dimensions": [
+          "rx_pid"
+        ],
+        "unit": "BytePerSecond",
+        "displayname": "Kafka broker - Incoming byte rate"
+      },
+      "source": {
+        "allowAdditionalKeys": false,
+        "calculateDelta": false,
+        "calculateRate": false,
+        "aggregation": "AVG",
+        "attribute": "OneMinuteRate",
+        "domain": "kafka.server",
+        "keyProperties": {
+          "type": "BrokerTopicMetrics",
+          "name": "BytesInPerSec"
+        }
+      }
+    },
+    {
+      "timeseries": {
+        "key": "kafka.server.BrokerTopicMetrics.BytesOutPerSec.OneMinuteRate",
+        "dimensions": [
+          "rx_pid"
+        ],
+        "unit": "BytePerSecond",
+        "displayname": "Kafka broker - Outgoing byte rate"
+      },
+      "source": {
+        "allowAdditionalKeys": false,
+        "calculateDelta": false,
+        "calculateRate": false,
+        "aggregation": "AVG",
+        "attribute": "OneMinuteRate",
+        "domain": "kafka.server",
+        "keyProperties": {
+          "type": "BrokerTopicMetrics",
+          "name": "BytesOutPerSec"
+        }
+      }
+    },
+    {
+      "timeseries": {
+        "key": "kafka.server.BrokerTopicMetrics.MessagesInPerSec.OneMinuteRate",
+        "dimensions": [
+          "rx_pid"
+        ],
+        "unit": "PerSecond",
+        "displayname": "Kafka broker - Messages in rate"
+      },
+      "source": {
+        "allowAdditionalKeys": false,
+        "calculateDelta": false,
+        "calculateRate": false,
+        "aggregation": "SUM",
+        "attribute": "OneMinuteRate",
+        "domain": "kafka.server",
+        "keyProperties": {
+          "type": "BrokerTopicMetrics",
+          "name": "MessagesInPerSec"
+        }
+      }
+    },
+    {
+      "timeseries": {
+        "key": "kafka.server.ReplicaManager.PartitionCount.Value",
+        "dimensions": [
+          "rx_pid"
+        ],
+        "unit": "Count",
+        "displayname": "Kafka broker - Partitions"
+      },
+      "source": {
+        "allowAdditionalKeys": true,
+        "calculateDelta": false,
+        "calculateRate": false,
+        "aggregation": "AVG",
+        "attribute": "Value",
+        "domain": "kafka.server",
+        "keyProperties": {
+          "type": "ReplicaManager",
+          "name": "PartitionCount"
+        }
+      }
+    },
+    {
+      "timeseries": {
+        "key": "pg.kafka.server.ReplicaManager.PartitionCount.Value",
+        "dimensions": [
+          "rx_pid"
+        ],
+        "unit": "Count",
+        "displayname": "Kafka broker - Partitions"
+      },
+      "source": {
+        "allowAdditionalKeys": true,
+        "calculateDelta": false,
+        "calculateRate": false,
+        "aggregation": "MAX",
+        "attribute": "Value",
+        "domain": "kafka.server",
+        "keyProperties": {
+          "type": "ReplicaManager",
+          "name": "PartitionCount"
+        }
+      },
+      "entity": "PROCESS_GROUP"
+    },
+    {
+      "timeseries": {
+        "key": "kafka.server.ReplicaManager.UnderReplicatedPartitions.Value",
+        "dimensions": [
+          "rx_pid"
+        ],
+        "unit": "Count",
+        "displayname": "Kafka broker - Under replicated partitions"
+      },
+      "source": {
+        "allowAdditionalKeys": true,
+        "calculateDelta": false,
+        "calculateRate": false,
+        "aggregation": "AVG",
+        "attribute": "Value",
+        "domain": "kafka.server",
+        "keyProperties": {
+          "type": "ReplicaManager",
+          "name": "UnderReplicatedPartitions"
+        }
+      },
+      "alert_settings": [
+        {
+          "default_state": "inactive",
+          "alert_id": "server.ReplicaManager.UnderReplicatedPartitions",
+          "event_type": "PERFORMANCE_EVENT",
+          "event_name": "Under replicated",
+          "description": "There are {severity} under replicated partitions",
+          "threshold": 0,
+          "alert_condition": "ABOVE",
+          "samples": 5,
+          "violating_samples": 3,
+          "dealerting_samples": 5
+        }
+      ]
+    },
+    {
+      "entity": "PROCESS_GROUP",
+      "timeseries": {
+        "key": "pg.kafka.server.ReplicaManager.UnderReplicatedPartitions.Value",
+        "dimensions": [
+          "rx_pid"
+        ],
+        "unit": "Count",
+        "displayname": "Kafka broker - Under replicated partitions"
+      },
+      "source": {
+        "allowAdditionalKeys": true,
+        "calculateDelta": false,
+        "calculateRate": false,
+        "aggregation": "AVG",
+        "attribute": "Value",
+        "domain": "kafka.server",
+        "keyProperties": {
+          "type": "ReplicaManager",
+          "name": "UnderReplicatedPartitions"
+        }
+      }
+    },
+    {
+      "entity": "PROCESS_GROUP",
+      "timeseries": {
+        "key": "pg.kafka.controller.KafkaController.OfflinePartitionsCount.Value",
+        "dimensions": [
+          "rx_pid"
+        ],
+        "unit": "Count",
+        "displayname": "Kafka controller - Offline partitions"
+      },
+      "source": {
+        "allowAdditionalKeys": true,
+        "calculateDelta": false,
+        "calculateRate": false,
+        "aggregation": "AVG",
+        "attribute": "Value",
+        "domain": "kafka.controller",
+        "keyProperties": {
+          "type": "KafkaController",
+          "name": "OfflinePartitionsCount"
+        }
+      },
+      "alert_settings": [
+        {
+          "default_state": "inactive",
+          "alert_id": "controller.KafkaController.OfflinePartitionsCount",
+          "event_type": "PERFORMANCE_EVENT",
+          "event_name": "Offline partitions",
+          "description": "There are {severity} offline partitions",
+          "threshold": 0,
+          "alert_condition": "ABOVE",
+          "samples": 5,
+          "violating_samples": 3,
+          "dealerting_samples": 5
+        }
+      ]
+    },
+    {
+      "entity": "PROCESS_GROUP",
+      "timeseries": {
+        "key": "pg.kafka.controller.KafkaController.ActiveControllerCount.Value",
+        "dimensions": [
+          "rx_pid"
+        ],
+        "unit": "Count",
+        "displayname": "Kafka controller - Active cluster controllers"
+      },
+      "source": {
+        "allowAdditionalKeys": true,
+        "calculateDelta": false,
+        "calculateRate": false,
+        "aggregation": "MAX",
+        "attribute": "Value",
+        "domain": "kafka.controller",
+        "keyProperties": {
+          "type": "KafkaController",
+          "name": "ActiveControllerCount"
+        }
+      },
+      "unit": "Count",
+      "alert_settings": [
+        {
+          "default_state": "inactive",
+          "alert_id": "pg.kafka.controller.KafkaController.ActiveControllerCount.ABOVE",
+          "event_type": "ERROR_EVENT",
+          "event_name": "Cluster controller mismatch",
+          "description": "There are {severity} active cluster controllers",
+          "alert_condition": "ABOVE",
+          "threshold": 1,
+          "samples": 5,
+          "violating_samples": 5,
+          "dealerting_samples": 5
+        }
+      ]
+    },
+    {
+      "timeseries": {
+        "key": "kafka.log.LogFlushStats.LogFlushRateAndTimeMs.Percentile95th",
+        "unit": "MilliSecond",
+        "displayname": "Kafka log - Log flush 95th percentile",
+        "dimensions": [
+          "rx_pid"
+        ]
+      },
+      "source": {
+        "allowAdditionalKeys": true,
+        "calculateDelta": false,
+        "calculateRate": false,
+        "aggregation": "AVG",
+        "attribute": "95thPercentile",
+        "domain": "kafka.log",
+        "keyProperties": {
+          "type": "LogFlushStats",
+          "name": "LogFlushRateAndTimeMs"
+        }
+      }
+    },
+    {
+      "timeseries": {
+        "key": "kafka.log.LogFlushStats.LogFlushRateAndTimeMs.Mean",
+        "unit": "MilliSecond",
+        "displayname": "Kafka log - Log flush mean time",
+        "dimensions": [
+          "rx_pid"
+        ]
+      },
+      "source": {
+        "allowAdditionalKeys": true,
+        "calculateDelta": false,
+        "calculateRate": false,
+        "aggregation": "AVG",
+        "attribute": "Mean",
+        "domain": "kafka.log",
+        "keyProperties": {
+          "type": "LogFlushStats",
+          "name": "LogFlushRateAndTimeMs"
+        }
+      }
+    },
+    {
+      "timeseries": {
+        "key": "kafka.network.RequestMetrics.RequestsPerSec.Produce.OneMinuteRate.request",
+        "dimensions": [
+          "rx_pid",
+          "request"
+        ],
+        "unit": "PerSecond",
+        "displayname": "Kafka network - Produce requests per second"
+      },
+      "source": {
+        "allowAdditionalKeys": true,
+        "calculateDelta": false,
+        "calculateRate": false,
+        "aggregation": "AVG",
+        "attribute": "OneMinuteRate",
+        "domain": "kafka.network",
+        "keyProperties": {
+          "type": "RequestMetrics",
+          "name": "RequestsPerSec",
+          "request": "Produce"
+        },
+        "splitting": {
+          "name": "request",
+          "type": "keyProperty",
+          "keyProperty": "request"
+        }
+      }
+    },
+    {
+      "timeseries": {
+        "key": "kafka.network.RequestMetrics.RequestsPerSec.FetchConsumer.OneMinuteRate.request",
+        "dimensions": [
+          "rx_pid",
+          "request"
+        ],
+        "unit": "PerSecond",
+        "displayname": "Kafka network - FetchConsumer requests per second"
+      },
+      "source": {
+        "allowAdditionalKeys": true,
+        "calculateDelta": false,
+        "calculateRate": false,
+        "aggregation": "AVG",
+        "attribute": "OneMinuteRate",
+        "domain": "kafka.network",
+        "keyProperties": {
+          "type": "RequestMetrics",
+          "name": "RequestsPerSec",
+          "request": "FetchConsumer"
+        },
+        "splitting": {
+          "name": "request",
+          "type": "keyProperty",
+          "keyProperty": "request"
+        }
+      }
+    },
+    {
+      "timeseries": {
+        "key": "kafka.network.RequestMetrics.RequestsPerSec.FetchFollower.OneMinuteRate.request",
+        "dimensions": [
+          "rx_pid",
+          "request"
+        ],
+        "unit": "PerSecond",
+        "displayname": "Kafka network - FetchFollower requests per second"
+      },
+      "source": {
+        "allowAdditionalKeys": true,
+        "calculateDelta": false,
+        "calculateRate": false,
+        "aggregation": "AVG",
+        "attribute": "OneMinuteRate",
+        "domain": "kafka.network",
+        "keyProperties": {
+          "type": "RequestMetrics",
+          "name": "RequestsPerSec",
+          "request": "FetchFollower"
+        },
+        "splitting": {
+          "name": "request",
+          "type": "keyProperty",
+          "keyProperty": "request"
+        }
+      }
+    },
+    {
+      "timeseries": {
+        "key": "kafka.network.RequestMetrics.TotalTimeMs.Produce.Count.request",
+        "dimensions": [
+          "rx_pid",
+          "request"
+        ],
+        "unit": "MilliSecond",
+        "displayname": "Kafka network - Total time per Produce request"
+      },
+      "source": {
+        "allowAdditionalKeys": true,
+        "calculateDelta": true,
+        "calculateRate": false,
+        "aggregation": "AVG",
+        "attribute": "Count",
+        "domain": "kafka.network",
+        "keyProperties": {
+          "type": "RequestMetrics",
+          "name": "TotalTimeMs",
+          "request": "Produce"
+        },
+        "splitting": {
+          "name": "request",
+          "type": "keyProperty",
+          "keyProperty": "request"
+        }
+      }
+    },
+    {
+      "timeseries": {
+        "key": "kafka.network.RequestMetrics.TotalTimeMs.FetchConsumer.Count.request",
+        "dimensions": [
+          "rx_pid",
+          "request"
+        ],
+        "unit": "MilliSecond",
+        "displayname": "Kafka network - Total time per FetchConsumer request"
+      },
+      "source": {
+        "allowAdditionalKeys": true,
+        "calculateDelta": true,
+        "calculateRate": false,
+        "aggregation": "AVG",
+        "attribute": "Count",
+        "domain": "kafka.network",
+        "keyProperties": {
+          "type": "RequestMetrics",
+          "name": "TotalTimeMs",
+          "request": "FetchConsumer"
+        },
+        "splitting": {
+          "name": "request",
+          "type": "keyProperty",
+          "keyProperty": "request"
+        }
+      }
+    },
+    {
+      "timeseries": {
+        "key": "kafka.network.RequestMetrics.TotalTimeMs.FetchFollower.Count.request",
+        "dimensions": [
+          "rx_pid",
+          "request"
+        ],
+        "unit": "MilliSecond",
+        "displayname": "Kafka network - Total time per FetchFollower request"
+      },
+      "source": {
+        "allowAdditionalKeys": true,
+        "calculateDelta": true,
+        "calculateRate": false,
+        "aggregation": "AVG",
+        "attribute": "Count",
+        "domain": "kafka.network",
+        "keyProperties": {
+          "type": "RequestMetrics",
+          "name": "TotalTimeMs",
+          "request": "FetchFollower"
+        },
+        "splitting": {
+          "name": "request",
+          "type": "keyProperty",
+          "keyProperty": "request"
+        }
+      }
+    },
+    {
+      "timeseries": {
+        "key": "kafka.server.BrokerTopicMetrics.TotalProduceRequestsPerSec.OneMinuteRate",
+        "dimensions": [
+          "rx_pid"
+        ],
+        "unit": "PerSecond",
+        "displayname": "Kafka broker - Produce request rate"
+      },
+      "source": {
+        "allowAdditionalKeys": false,
+        "calculateDelta": false,
+        "calculateRate": false,
+        "aggregation": "SUM",
+        "attribute": "OneMinuteRate",
+        "domain": "kafka.server",
+        "keyProperties": {
+          "type": "BrokerTopicMetrics",
+          "name": "TotalProduceRequestsPerSec"
+        }
+      }
+    },
+    {
+      "timeseries": {
+        "key": "kafka.server.BrokerTopicMetrics.TotalFetchRequestsPerSec.OneMinuteRate",
+        "dimensions": [
+          "rx_pid"
+        ],
+        "unit": "PerSecond",
+        "displayname": "Kafka broker - Fetch request rate"
+      },
+      "source": {
+        "allowAdditionalKeys": false,
+        "calculateDelta": false,
+        "calculateRate": false,
+        "aggregation": "SUM",
+        "attribute": "OneMinuteRate",
+        "domain": "kafka.server",
+        "keyProperties": {
+          "type": "BrokerTopicMetrics",
+          "name": "TotalFetchRequestsPerSec"
+        }
+      }
+    },
+    {
+      "timeseries": {
+        "key": "kafka.server.BrokerTopicMetrics.FailedProduceRequestsPerSec.OneMinuteRate",
+        "dimensions": [
+          "rx_pid"
+        ],
+        "unit": "PerSecond",
+        "displayname": "Kafka broker - Failed produce requests"
+      },
+      "source": {
+        "allowAdditionalKeys": false,
+        "calculateDelta": false,
+        "calculateRate": false,
+        "aggregation": "SUM",
+        "attribute": "OneMinuteRate",
+        "domain": "kafka.server",
+        "keyProperties": {
+          "type": "BrokerTopicMetrics",
+          "name": "FailedProduceRequestsPerSec"
+        }
+      }
+    },
+    {
+      "timeseries": {
+        "key": "kafka.server.BrokerTopicMetrics.FailedFetchRequestsPerSec.OneMinuteRate",
+        "dimensions": [
+          "rx_pid"
+        ],
+        "unit": "PerSecond",
+        "displayname": "Kafka broker - Failed fetch requests"
+      },
+      "source": {
+        "allowAdditionalKeys": false,
+        "calculateDelta": false,
+        "calculateRate": false,
+        "aggregation": "SUM",
+        "attribute": "OneMinuteRate",
+        "domain": "kafka.server",
+        "keyProperties": {
+          "type": "BrokerTopicMetrics",
+          "name": "FailedFetchRequestsPerSec"
+        }
+      }
+    },
+    {
+      "timeseries": {
+        "key": "kafka.controller.ControllerStats.LeaderElectionRateAndTimeMs.OneMinuteRate",
+        "dimensions": [
+          "rx_pid"
+        ],
+        "unit": "MilliSecond",
+        "displayname": "Kafka broker - Leader election rate"
+      },
+      "source": {
+        "allowAdditionalKeys": true,
+        "calculateDelta": false,
+        "calculateRate": false,
+        "aggregation": "AVG",
+        "attribute": "OneMinuteRate",
+        "domain": "kafka.controller",
+        "keyProperties": {
+          "type": "ControllerStats",
+          "name": "LeaderElectionRateAndTimeMs"
+        }
+      }
+    },
+    {
+      "entity": "PROCESS_GROUP",
+      "timeseries": {
+        "key": "pg.kafka.controller.ControllerStats.LeaderElectionRateAndTimeMs.OneMinuteRate",
+        "dimensions": [
+          "rx_pid"
+        ],
+        "unit": "MilliSecond",
+        "displayname": "Kafka broker - Leader election rate"
+      },
+      "source": {
+        "allowAdditionalKeys": true,
+        "calculateDelta": false,
+        "calculateRate": false,
+        "aggregation": "AVG",
+        "attribute": "OneMinuteRate",
+        "domain": "kafka.controller",
+        "keyProperties": {
+          "type": "ControllerStats",
+          "name": "LeaderElectionRateAndTimeMs"
+        }
+      }
+    },
+    {
+      "timeseries": {
+        "key": "kafka.controller.ControllerStats.UncleanLeaderElectionsPerSec.OneMinuteRate",
+        "dimensions": [
+          "rx_pid"
+        ],
+        "unit": "PerSecond",
+        "displayname": "Kafka broker - Unclean election rate"
+      },
+      "source": {
+        "allowAdditionalKeys": true,
+        "calculateDelta": false,
+        "calculateRate": false,
+        "aggregation": "AVG",
+        "attribute": "OneMinuteRate",
+        "domain": "kafka.controller",
+        "keyProperties": {
+          "type": "ControllerStats",
+          "name": "UncleanLeaderElectionsPerSec"
+        }
+      }
+    },
+    {
+      "entity": "PROCESS_GROUP",
+      "timeseries": {
+        "key": "pg.kafka.controller.ControllerStats.UncleanLeaderElectionsPerSec.OneMinuteRate",
+        "dimensions": [
+          "rx_pid"
+        ],
+        "unit": "PerSecond",
+        "displayname": "Kafka broker - Unclean election rate"
+      },
+      "source": {
+        "allowAdditionalKeys": true,
+        "calculateDelta": false,
+        "calculateRate": false,
+        "aggregation": "AVG",
+        "attribute": "OneMinuteRate",
+        "domain": "kafka.controller",
+        "keyProperties": {
+          "type": "ControllerStats",
+          "name": "UncleanLeaderElectionsPerSec"
+        }
+      }
+    },
+    {
+      "timeseries": {
+        "key": "kafka.server.ReplicaManager.LeaderCount.Value",
+        "dimensions": [
+          "rx_pid"
+        ],
+        "unit": "Count",
+        "displayname": "Kafka broker - Leader count"
+      },
+      "source": {
+        "allowAdditionalKeys": true,
+        "calculateDelta": false,
+        "calculateRate": false,
+        "aggregation": "MAX",
+        "attribute": "Value",
+        "domain": "kafka.server",
+        "keyProperties": {
+          "type": "ReplicaManager",
+          "name": "LeaderCount"
+        }
+      }
+    },
+    {
+      "timeseries": {
+        "key": "kafka.server.ReplicaFetcherManager.MaxLag.Replica.Value",
+        "dimensions": [
+          "rx_pid"
+        ],
+        "unit": "Count",
+        "displayname": "Kafka broker - Max follower lag"
+      },
+      "source": {
+        "allowAdditionalKeys": true,
+        "calculateDelta": false,
+        "calculateRate": false,
+        "aggregation": "MAX",
+        "attribute": "Value",
+        "domain": "kafka.server",
+        "keyProperties": {
+          "type": "ReplicaFetcherManager",
+          "name": "MaxLag",
+          "clientId": "Replica"
+        }
+      }
+    },
+    {
+      "timeseries": {
+        "key": "kafka.network.RequestChannel.RequestQueueSize.Value",
+        "dimensions": [
+          "rx_pid"
+        ],
+        "unit": "Count",
+        "displayname": "Kafka broker - Request queue size"
+      },
+      "source": {
+        "allowAdditionalKeys": true,
+        "calculateDelta": false,
+        "calculateRate": false,
+        "aggregation": "AVG",
+        "attribute": "Value",
+        "domain": "kafka.network",
+        "keyProperties": {
+          "type": "RequestChannel",
+          "name": "RequestQueueSize"
+        }
+      }
+    },
+    {
+      "timeseries": {
+        "key": "kafka.server.SessionExpireListener.ZooKeeperDisconnectsPerSec.OneMinuteRate",
+        "dimensions": [
+          "rx_pid"
+        ],
+        "unit": "PerSecond",
+        "displayname": "Kafka broker - ZooKeeper disconnects"
+      },
+      "source": {
+        "allowAdditionalKeys": true,
+        "calculateDelta": false,
+        "calculateRate": false,
+        "aggregation": "MAX",
+        "attribute": "OneMinuteRate",
+        "domain": "kafka.server",
+        "keyProperties": {
+          "type": "SessionExpireListener",
+          "name": "ZooKeeperDisconnectsPerSec"
+        }
+      }
+    },
+    {
+      "timeseries": {
+        "key": "kafka.server.SessionExpireListener.ZooKeeperExpiresPerSec.OneMinuteRate",
+        "dimensions": [
+          "rx_pid"
+        ],
+        "unit": "PerSecond",
+        "displayname": "Kafka broker - ZooKeeper expires"
+      },
+      "source": {
+        "allowAdditionalKeys": true,
+        "calculateDelta": false,
+        "calculateRate": false,
+        "aggregation": "MAX",
+        "attribute": "OneMinuteRate",
+        "domain": "kafka.server",
+        "keyProperties": {
+          "type": "SessionExpireListener",
+          "name": "ZooKeeperExpiresPerSec"
+        }
+      }
+    },
+    {
+      "timeseries": {
+        "key": "kafka.producer.producer-metrics.request-rate",
+        "dimensions": [
+          "rx_pid"
+        ],
+        "unit": "PerSecond",
+        "displayname": "Kafka producer - Requests"
+      },
+      "source": {
+        "allowAdditionalKeys": true,
+        "calculateDelta": false,
+        "calculateRate": false,
+        "aggregation": "AVG",
+        "attribute": "request-rate",
+        "domain": "kafka.producer",
+        "keyProperties": {
+          "type": "producer-metrics",
+          "client-id": "*"
+        }
+      }
+    },
+    {
+      "timeseries": {
+        "key": "kafka.consumer.consumer-metrics.request-rate",
+        "dimensions": [
+          "rx_pid"
+        ],
+        "unit": "PerSecond",
+        "displayname": "Kafka consumer - Requests"
+      },
+      "source": {
+        "allowAdditionalKeys": true,
+        "calculateDelta": false,
+        "calculateRate": false,
+        "aggregation": "AVG",
+        "attribute": "request-rate",
+        "domain": "kafka.consumer",
+        "keyProperties": {
+          "type": "consumer-metrics",
+          "client-id": "*"
+        }
+      }
+    },
+    {
+      "timeseries": {
+        "key": "kafka.connect.connect-metrics.request-rate",
+        "dimensions": [
+          "rx_pid"
+        ],
+        "unit": "PerSecond",
+        "displayname": "Kafka connect - Requests"
+      },
+      "source": {
+        "allowAdditionalKeys": true,
+        "calculateDelta": false,
+        "calculateRate": false,
+        "aggregation": "AVG",
+        "attribute": "request-rate",
+        "domain": "kafka.connect",
+        "keyProperties": {
+          "type": "connect-metrics",
+          "client-id": "*"
+        }
+      }
+    },
+    {
+      "timeseries": {
+        "key": "kafka.producer.producer-metrics.request-size-avg",
+        "dimensions": [
+          "rx_pid"
+        ],
+        "unit": "Byte",
+        "displayname": "Kafka producer - Request size"
+      },
+      "source": {
+        "allowAdditionalKeys": true,
+        "calculateDelta": false,
+        "calculateRate": false,
+        "aggregation": "AVG",
+        "attribute": "request-size-avg",
+        "domain": "kafka.producer",
+        "keyProperties": {
+          "type": "producer-metrics",
+          "client-id": "*"
+        }
+      }
+    },
+    {
+      "timeseries": {
+        "key": "kafka.consumer.consumer-metrics.request-size-avg",
+        "dimensions": [
+          "rx_pid"
+        ],
+        "unit": "Byte",
+        "displayname": "Kafka consumer - Request size"
+      },
+      "source": {
+        "allowAdditionalKeys": true,
+        "calculateDelta": false,
+        "calculateRate": false,
+        "aggregation": "AVG",
+        "attribute": "request-size-avg",
+        "domain": "kafka.consumer",
+        "keyProperties": {
+          "type": "consumer-metrics",
+          "client-id": "*"
+        }
+      }
+    },
+    {
+      "timeseries": {
+        "key": "kafka.connect.connect-metrics.request-size-avg",
+        "dimensions": [
+          "rx_pid"
+        ],
+        "unit": "Byte",
+        "displayname": "Kafka connect - Request size"
+      },
+      "source": {
+        "allowAdditionalKeys": true,
+        "calculateDelta": false,
+        "calculateRate": false,
+        "aggregation": "AVG",
+        "attribute": "request-size-avg",
+        "domain": "kafka.connect",
+        "keyProperties": {
+          "type": "connect-metrics",
+          "client-id": "*"
+        }
+      }
+    },
+    {
+      "timeseries": {
+        "key": "kafka.producer.producer-metrics.incoming-byte-rate",
+        "dimensions": [
+          "rx_pid"
+        ],
+        "unit": "BytePerSecond",
+        "displayname": "Kafka producer - Incoming byte rate"
+      },
+      "source": {
+        "allowAdditionalKeys": true,
+        "calculateDelta": false,
+        "calculateRate": false,
+        "aggregation": "SUM",
+        "attribute": "incoming-byte-rate",
+        "domain": "kafka.producer",
+        "keyProperties": {
+          "type": "producer-metrics",
+          "client-id": "*"
+        }
+      }
+    },
+    {
+      "timeseries": {
+        "key": "kafka.consumer.consumer-metrics.incoming-byte-rate",
+        "dimensions": [
+          "rx_pid"
+        ],
+        "unit": "BytePerSecond",
+        "displayname": "Kafka consumer - Incoming byte rate"
+      },
+      "source": {
+        "allowAdditionalKeys": false,
+        "calculateDelta": false,
+        "calculateRate": false,
+        "aggregation": "SUM",
+        "attribute": "incoming-byte-rate",
+        "domain": "kafka.consumer",
+        "keyProperties": {
+          "type": "consumer-metrics",
+          "client-id": "*"
+        }
+      }
+    },
+    {
+      "timeseries": {
+        "key": "kafka.connect.connect-metrics.incoming-byte-rate",
+        "dimensions": [
+          "rx_pid"
+        ],
+        "unit": "BytePerSecond",
+        "displayname": "Kafka connect - Incoming byte rate"
+      },
+      "source": {
+        "allowAdditionalKeys": true,
+        "calculateDelta": false,
+        "calculateRate": false,
+        "aggregation": "SUM",
+        "attribute": "incoming-byte-rate",
+        "domain": "kafka.connect",
+        "keyProperties": {
+          "type": "connect-metrics",
+          "client-id": "*"
+        }
+      }
+    },
+    {
+      "timeseries": {
+        "key": "kafka.producer.producer-metrics.outgoing-byte-rate",
+        "dimensions": [
+          "rx_pid"
+        ],
+        "unit": "BytePerSecond",
+        "displayname": "Kafka producer - Outgoing byte rate"
+      },
+      "source": {
+        "allowAdditionalKeys": true,
+        "calculateDelta": false,
+        "calculateRate": false,
+        "aggregation": "SUM",
+        "attribute": "outgoing-byte-rate",
+        "domain": "kafka.producer",
+        "keyProperties": {
+          "type": "producer-metrics",
+          "client-id": "*"
+        }
+      }
+    },
+    {
+      "timeseries": {
+        "key": "kafka.consumer.consumer-metrics.outgoing-byte-rate",
+        "dimensions": [
+          "rx_pid"
+        ],
+        "unit": "BytePerSecond",
+        "displayname": "Kafka consumer - Outgoing byte rate"
+      },
+      "source": {
+        "allowAdditionalKeys": false,
+        "calculateDelta": false,
+        "calculateRate": false,
+        "aggregation": "SUM",
+        "attribute": "outgoing-byte-rate",
+        "domain": "kafka.consumer",
+        "keyProperties": {
+          "type": "consumer-metrics",
+          "client-id": "*"
+        }
+      }
+    },
+    {
+      "timeseries": {
+        "key": "kafka.connect.connect-metrics.outgoing-byte-rate",
+        "dimensions": [
+          "rx_pid"
+        ],
+        "unit": "BytePerSecond",
+        "displayname": "Kafka connect - Outgoing byte rate"
+      },
+      "source": {
+        "allowAdditionalKeys": true,
+        "calculateDelta": false,
+        "calculateRate": false,
+        "aggregation": "SUM",
+        "attribute": "outgoing-byte-rate",
+        "domain": "kafka.connect",
+        "keyProperties": {
+          "type": "connect-metrics",
+          "client-id": "*"
+        }
+      }
+    }
+  ],
+  "ui": {
+    "charts": [
+      {
+        "group": "Kafka broker",
+        "title": "Byte rate",
+        "series": [
+          {
+            "key": "kafka.server.BrokerTopicMetrics.BytesInPerSec.OneMinuteRate",
+            "displayname": "Incoming byte rate",
+            "mergeaggregation": "SUM"
+          },
+          {
+            "key": "kafka.server.BrokerTopicMetrics.BytesOutPerSec.OneMinuteRate",
+            "displayname": "Outgoing byte rate",
+            "mergeaggregation": "SUM"
+          }
+        ]
+      },
+      {
+        "group": "Kafka broker",
+        "title": "Messages",
+        "series": [
+          {
+            "key": "kafka.server.BrokerTopicMetrics.MessagesInPerSec.OneMinuteRate",
+            "displayname": "Messages in rate",
+            "mergeaggregation": "SUM"
+          }
+        ]
+      },
+      {
+        "group": "Kafka network",
+        "title": "Requests",
+        "series": [
+          {
+            "key": "kafka.network.RequestMetrics.RequestsPerSec.Produce.OneMinuteRate.request",
+            "displayname": "Requests per second",
+            "seriestype": "BAR"
+          },
+          {
+            "key": "kafka.network.RequestMetrics.RequestsPerSec.FetchConsumer.OneMinuteRate.request",
+            "displayname": "Requests per second",
+            "seriestype": "BAR"
+          },
+          {
+            "key": "kafka.network.RequestMetrics.RequestsPerSec.FetchFollower.OneMinuteRate.request",
+            "displayname": "Requests per second",
+            "seriestype": "BAR"
+          },
+          {
+            "key": "kafka.network.RequestMetrics.TotalTimeMs.Produce.Count.request",
+            "displayname": "Total time per request",
+            "seriestype": "AREA",
+            "rightaxis": true
+          },
+          {
+            "key": "kafka.network.RequestMetrics.TotalTimeMs.FetchConsumer.Count.request",
+            "displayname": "Total time per request",
+            "seriestype": "AREA",
+            "rightaxis": true
+          },
+          {
+            "key": "kafka.network.RequestMetrics.TotalTimeMs.FetchFollower.Count.request",
+            "displayname": "Total time per request",
+            "seriestype": "AREA",
+            "rightaxis": true
+          }
+        ]
+      },
+      {
+        "group": "Kafka broker",
+        "title": "Produce request rate",
+        "series": [
+          {
+            "key": "kafka.server.BrokerTopicMetrics.TotalProduceRequestsPerSec.OneMinuteRate",
+            "displayname": "Produce request rate",
+            "seriestype": "BAR",
+            "stacked": true
+          },
+          {
+            "key": "kafka.server.BrokerTopicMetrics.FailedProduceRequestsPerSec.OneMinuteRate",
+            "displayname": "Failed produce requests",
+            "seriestype": "BAR",
+            "stacked": true
+          }
+        ]
+      },
+      {
+        "group": "Kafka broker",
+        "title": "Fetch request rate",
+        "series": [
+          {
+            "key": "kafka.server.BrokerTopicMetrics.TotalFetchRequestsPerSec.OneMinuteRate",
+            "displayname": "Fetch request rate",
+            "seriestype": "BAR",
+            "stacked": true
+          },
+          {
+            "key": "kafka.server.BrokerTopicMetrics.FailedFetchRequestsPerSec.OneMinuteRate",
+            "displayname": "Failed fetch requests",
+            "seriestype": "BAR",
+            "stacked": true
+          }
+        ]
+      },
+      {
+        "group": "Kafka broker",
+        "title": "Leaders",
+        "series": [
+          {
+            "key": "kafka.controller.ControllerStats.LeaderElectionRateAndTimeMs.OneMinuteRate",
+            "displayname": "Leader election rate"
+          },
+          {
+            "key": "kafka.controller.ControllerStats.UncleanLeaderElectionsPerSec.OneMinuteRate",
+            "displayname": "Unclean election rate"
+          },
+          {
+            "key": "kafka.server.ReplicaManager.LeaderCount.Value",
+            "displayname": "Leader count"
+          }
+        ]
+      },
+      {
+        "group": "Kafka broker",
+        "title": "Lag",
+        "description": "Maximum lag in messages between a follower and leader replicas.",
+        "series": [
+          {
+            "key": "kafka.server.ReplicaFetcherManager.MaxLag.Replica.Value",
+            "displayname": "Max follower lag"
+          }
+        ]
+      },
+      {
+        "group": "Kafka broker",
+        "title": "Queue Size",
+        "series": [
+          {
+            "key": "kafka.network.RequestChannel.RequestQueueSize.Value",
+            "displayname": "Request queue size"
+          }
+        ]
+      },
+      {
+        "group": "Kafka broker",
+        "title": "ZooKeeper",
+        "series": [
+          {
+            "key": "kafka.server.SessionExpireListener.ZooKeeperDisconnectsPerSec.OneMinuteRate",
+            "displayname": "ZooKeeper disconnects",
+            "seriestype": "BAR"
+          },
+          {
+            "key": "kafka.server.SessionExpireListener.ZooKeeperExpiresPerSec.OneMinuteRate",
+            "displayname": "ZooKeeper expires",
+            "seriestype": "BAR"
+          }
+        ]
+      },
+      {
+        "group": "Kafka cluster",
+        "title": "Partitions",
+        "description": "All partitions in a cluster. Offline partitions are non-writable partitions without leaders.",
+        "series": [
+          {
+            "key": "pg.kafka.server.ReplicaManager.PartitionCount.Value",
+            "displayname": "Partitions",
+            "rightaxis": true,
+            "mergeraggregation": "SUM",
+            "aggregation": "MAX",
+            "seriestype": "LINE"
+          },
+          {
+            "key": "pg.kafka.server.ReplicaManager.UnderReplicatedPartitions.Value",
+            "displayname": "Under replicated partitions",
+            "mergeraggregation": "SUM",
+            "aggregation": "MAX",
+            "seriestype": "BAR",
+            "stacked": true
+          },
+          {
+            "key": "pg.kafka.controller.KafkaController.OfflinePartitionsCount.Value",
+            "displayname": "Offline partitions",
+            "mergeraggregation": "MAX",
+            "aggregation": "MAX",
+            "seriestype": "BAR",
+            "stacked": true
+          }
+        ]
+      },
+      {
+        "group": "Kafka cluster",
+        "title": "Controllers",
+        "series": [
+          {
+            "key": "pg.kafka.controller.KafkaController.ActiveControllerCount.Value",
+            "displayname": "Active controllers",
+            "mergeaggregation": "MAX"
+          }
+        ]
+      }
+    ],
+    "keycharts": [
+      {
+        "group": "Kafka broker",
+        "title": "Log flush",
+        "series": [
+          {
+            "key": "kafka.log.LogFlushStats.LogFlushRateAndTimeMs.Mean",
+            "aggregation": "avg",
+            "displayname": "Mean time"
+          },
+          {
+            "key": "kafka.log.LogFlushStats.LogFlushRateAndTimeMs.Percentile95th",
+            "aggregation": "avg",
+            "displayname": "95th percentile"
+          }
+        ]
+      },
+      {
+        "group": "Kafka broker",
+        "title": "Byte rate",
+        "series": [
+          {
+            "key": "kafka.server.BrokerTopicMetrics.BytesInPerSec.OneMinuteRate",
+            "displayname": "Incoming byte rate"
+          },
+          {
+            "key": "kafka.server.BrokerTopicMetrics.BytesOutPerSec.OneMinuteRate",
+            "displayname": "Outgoing byte rate"
+          }
+        ]
+      },
+      {
+        "group": "Kafka broker",
+        "title": "Partitions",
+        "description": "Online partitions and number of not in sync replicas.",
+        "series": [
+          {
+            "key": "kafka.server.ReplicaManager.PartitionCount.Value",
+            "displayname": "Partitions",
+            "rightaxis": true,
+            "seriestype": "LINE"
+          },
+          {
+            "key": "kafka.server.ReplicaManager.UnderReplicatedPartitions.Value",
+            "displayname": "Under replicated partitions",
+            "seriestype": "BAR",
+            "stacked": true
+          }
+        ]
+      },
+      {
+        "group": "Kafka broker",
+        "title": "Produce request rate",
+        "series": [
+          {
+            "key": "kafka.server.BrokerTopicMetrics.TotalProduceRequestsPerSec.OneMinuteRate",
+            "displayname": "Produce request rate",
+            "seriestype": "BAR",
+            "stacked": true
+          },
+          {
+            "key": "kafka.server.BrokerTopicMetrics.FailedProduceRequestsPerSec.OneMinuteRate",
+            "displayname": "Failed produce requests",
+            "seriestype": "BAR",
+            "stacked": true
+          },
+          {
+            "key": "kafka.network.RequestMetrics.TotalTimeMs.Produce.Count.request",
+            "displayname": "Produce latency",
+            "seriestype": "LINE",
+            "rightaxis": true
+          }
+        ]
+      },
+      {
+        "group": "Kafka broker",
+        "title": "Fetch request rate",
+        "series": [
+          {
+            "key": "kafka.server.BrokerTopicMetrics.TotalFetchRequestsPerSec.OneMinuteRate",
+            "displayname": "Fetch request rate",
+            "seriestype": "BAR",
+            "stacked": true
+          },
+          {
+            "key": "kafka.server.BrokerTopicMetrics.FailedFetchRequestsPerSec.OneMinuteRate",
+            "displayname": "Failed fetch requests",
+            "seriestype": "BAR",
+            "stacked": true
+          },
+          {
+            "key": "kafka.network.RequestMetrics.TotalTimeMs.FetchConsumer.Count.request",
+            "displayname": "Fetch latency",
+            "seriestype": "LINE",
+            "rightaxis": true
+          }
+        ]
+      },
+      {
+        "group": "Kafka producer",
+        "title": "Byte rate",
+        "series": [
+          {
+            "key": "kafka.producer.producer-metrics.incoming-byte-rate",
+            "displayname": "Incoming byte rate"
+          },
+          {
+            "key": "kafka.producer.producer-metrics.outgoing-byte-rate",
+            "displayname": "Outgoing byte rate"
+          }
+        ]
+      },
+      {
+        "group": "Kafka consumer",
+        "title": "Byte rate",
+        "series": [
+          {
+            "key": "kafka.consumer.consumer-metrics.incoming-byte-rate",
+            "displayname": "Incoming byte rate"
+          },
+          {
+            "key": "kafka.consumer.consumer-metrics.outgoing-byte-rate",
+            "displayname": "Outgoing byte rate"
+          }
+        ]
+      },
+      {
+        "group": "Kafka connect",
+        "title": "Byte rate",
+        "series": [
+          {
+            "key": "kafka.connect.connect-metrics.incoming-byte-rate",
+            "displayname": "Incoming byte rate"
+          },
+          {
+            "key": "kafka.connect.connect-metrics.outgoing-byte-rate",
+            "displayname": "Outgoing byte rate"
+          }
+        ]
+      },
+      {
+        "group": "Kafka producer",
+        "title": "Requests",
+        "series": [
+          {
+            "key": "kafka.producer.producer-metrics.request-rate",
+            "displayname": "Requests"
+          },
+          {
+            "key": "kafka.producer.producer-metrics.request-size-avg",
+            "displayname": "Request size",
+            "seriestype": "BAR",
+            "rightaxis": true
+          }
+        ]
+      },
+      {
+        "group": "Kafka consumer",
+        "title": "Requests",
+        "series": [
+          {
+            "key": "kafka.consumer.consumer-metrics.request-rate",
+            "displayname": "Requests"
+          },
+          {
+            "key": "kafka.consumer.consumer-metrics.request-size-avg",
+            "displayname": "Request size",
+            "seriestype": "BAR",
+            "rightaxis": true
+          }
+        ]
+      },
+      {
+        "group": "Kafka connect",
+        "title": "Requests",
+        "series": [
+          {
+            "key": "kafka.connect.connect-metrics.request-rate",
+            "displayname": "Requests"
+          },
+          {
+            "key": "kafka.connect.connect-metrics.request-size-avg",
+            "displayname": "Request size",
+            "seriestype": "BAR",
+            "rightaxis": true
+          }
+        ]
+      }
+    ],
+    "keymetrics": [
+      {
+        "key": "kafka.server.ReplicaManager.LeaderCount.Value",
+        "displayname": "Leaders"
+      },
+      {
+        "key": "kafka.server.ReplicaManager.PartitionCount.Value",
+        "displayname": "Partitions"
+      }
+    ],
+    "pgmetrics": [
+      {
+        "key": "kafka.server.ReplicaManager.UnderReplicatedPartitions.Value",
+        "displayname": "Under replicated partitions"
+      },
+      {
+        "key": "kafka.server.BrokerTopicMetrics.BytesInPerSec.OneMinuteRate",
+        "displayname": "Incoming byte rate"
+      },
+      {
+        "key": "kafka.server.BrokerTopicMetrics.BytesOutPerSec.OneMinuteRate",
+        "displayname": "Outgoing byte rate"
+      },
+      {
+        "key": "kafka.server.BrokerTopicMetrics.MessagesInPerSec.OneMinuteRate",
+        "displayname": "Incoming message rate"
+      },
+      {
+        "key": "kafka.server.BrokerTopicMetrics.TotalProduceRequestsPerSec.OneMinuteRate",
+        "displayname": "Produce requests rate"
+      },
+      {
+        "key": "kafka.server.BrokerTopicMetrics.TotalFetchRequestsPerSec.OneMinuteRate",
+        "displayname": "Fetch requests rate"
+      },
+      {
+        "key": "kafka.network.RequestMetrics.TotalTimeMs.Produce.Count.request",
+        "displayname": "Produce latency"
+      },
+      {
+        "key": "kafka.network.RequestMetrics.TotalTimeMs.FetchConsumer.Count.request",
+        "displayname": "Fetch latency"
+      }
+    ]
+  }
+}
