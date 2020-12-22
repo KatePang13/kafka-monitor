@@ -16,7 +16,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 1,
-  "iteration": 1608625697270,
+  "iteration": 1608629397267,
   "links": [],
   "panels": [
     {
@@ -993,7 +993,7 @@
   },
   "timepicker": {},
   "timezone": "",
-  "title": "Kafka broker",
+  "title": "Kafka-broker",
   "uid": "dLJMoIxGk",
-  "version": 5
+  "version": 6
 }

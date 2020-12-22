@@ -16,7 +16,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 2,
-  "iteration": 1608628560988,
+  "iteration": 1608629431609,
   "links": [],
   "panels": [
     {
@@ -327,12 +327,12 @@
         "name": "broker",
         "options": [
           {
-            "selected": true,
+            "selected": false,
             "text": "kafka1",
             "value": "kafka1"
           },
           {
-            "selected": false,
+            "selected": true,
             "text": "kafka2",
             "value": "kafka2"
           },
@@ -363,5 +363,5 @@
   "timezone": "",
   "title": "kafka-network",
   "uid": "9JkgfIxGz",
-  "version": 1
+  "version": 2
 }
